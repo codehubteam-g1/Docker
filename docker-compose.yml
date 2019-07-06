@@ -1,0 +1,23 @@
+version: '3'
+services:
+  postgresql:
+    image: postgres:latest
+    restart: always
+    ports: 
+      - "${PG_PORT}:5432"
+    environment:
+      - "POSTGRES_USER=postgres"
+      - "POSTGRES_PASSWORD=password"
+      - "POSTGRES_DB=users" 
+    volumes: 
+      - ${DBDATA_DIR}:/var/lib/postgresql/data
+  users:
+    image: "node:latest"
+    restart: always
+    ports:
+      - "${USERS_PORT}:3000"
+    volumes:
+      - "${USERS_DIR}:/Code/users"
+    entrypoint: ["sleep", "10000"]
+    working_dir: /Code/users
+
