@@ -41,5 +41,20 @@ services:
     entrypoint: ["sleep", "10000"]
     working_dir: /Code/shops
 
+  orders:
+    image: node:latest
+    restart: always
+    ports: 
+      - "${ORDERS_PORT}:3000"
+    environment:
+      - "DB_NAME=rappidb"
+      - "DB_USER=postgres"
+      - "DB_PASS=password"
+      - "DB_HOST=postgresql"
+    volumes:
+      - "${ORDERS_DIR}:/Code/orders"
+    entrypoint: ["sleep", "10000"]
+    working_dir: /Code/orders
+
 
 
