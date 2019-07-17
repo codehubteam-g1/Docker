@@ -15,7 +15,7 @@ services:
     image: "node:latest"
     restart: always
     ports:
-      - "${USERS_PORT}:3000"
+      - "${USERS_PORT}:3001"
     environment:
       - "DB_NAME=rappidb"
       - "DB_USER=postgres"
@@ -23,29 +23,29 @@ services:
       - "DB_HOST=postgresql"
     volumes:
       - "${USERS_DIR}:/Code/users"
-    entrypoint: ["sleep", "10000"]
+    entrypoint: ["sleep", "5000"]
     working_dir: /Code/users
   
-  shops:
+  stores:
     image: node:latest
     restart: always
     ports: 
-      - "${SHOPS_PORT}:3000"
+      - "${STORES_PORT}:4001"
     environment:
       - "DB_NAME=rappidb"
       - "DB_USER=postgres"
       - "DB_PASS=password"
       - "DB_HOST=postgresql"
     volumes:
-      - "${SHOPS_DIR}:/Code/shops"
-    entrypoint: ["sleep", "10000"]
-    working_dir: /Code/shops
+      - "${STORES_DIR}:/Code/stores"
+    entrypoint: ["sleep", "5000"]
+    working_dir: /Code/stores
 
   orders:
     image: node:latest
     restart: always
     ports: 
-      - "${ORDERS_PORT}:3000"
+      - "${ORDERS_PORT}:5001"
     environment:
       - "DB_NAME=rappidb"
       - "DB_USER=postgres"
@@ -53,7 +53,7 @@ services:
       - "DB_HOST=postgresql"
     volumes:
       - "${ORDERS_DIR}:/Code/orders"
-    entrypoint: ["sleep", "10000"]
+    entrypoint: ["sleep", "5000"]
     working_dir: /Code/orders
 
 
