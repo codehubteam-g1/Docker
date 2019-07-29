@@ -56,5 +56,20 @@ services:
     entrypoint: ["sleep", "5000"]
     working_dir: /Code/orders
 
+  shopping-carts:
+    image: node:latest
+    restart: always
+    ports: 
+      - "${SHOPPING_CARTS_PORT}:6001"
+    environment:
+      - "DB_NAME=rappidb"
+      - "DB_USER=postgres"
+      - "DB_PASS=password"
+      - "DB_HOST=postgresql"
+    volumes:
+      - "${SHOPPING_CARTS_DIR}:/Code/shopping-carts"
+    entrypoint: ["sleep", "5000"]
+    working_dir: /Code/shopping-carts
+
 
 
