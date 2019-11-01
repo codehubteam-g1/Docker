@@ -1,6 +1,8 @@
 sudo apt update
 sudo apt install git
 
+cd ..
+
 #git clone https://github.com/rappi-clone/docker.git
 git clone https://github.com/rappi-clone/clients-front.git
 git clone https://github.com/rappi-clone/users.git
