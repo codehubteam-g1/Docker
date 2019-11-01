@@ -10,7 +10,7 @@ git clone https://github.com/rappi-clone/stores.git
 git clone https://github.com/rappi-clone/shopping-carts.git
 
 #Docker for Ubuntu installation
-sudo apt-get install \
+echo yes | sudo apt-get install \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -20,13 +20,13 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
 sudo apt-key fingerprint 0EBFCD88
 
-sudo add-apt-repository \
+echo yes | sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
 
 sudo apt update
-sudo apt install docker-ce
+echo yes | sudo apt install docker-ce
 sudo docker run hello-world
 
 #Install docker-compose for linux
